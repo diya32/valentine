@@ -8,9 +8,26 @@ body{
   margin:0;
   font-family: Arial, Helvetica, sans-serif;
   text-align:center;
-  background: black;
+  background: #ffd6e7;
   color:white;
   overflow:hidden;
+}
+  .heart{
+  position:absolute;
+  color:#ff2e63;
+  animation: float 5s linear infinite;
+  font-size:20px;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-10vh);
+    opacity:0;
+  }
 }
 
 .box{
@@ -25,11 +42,34 @@ button{
   border:none;
   border-radius:12px;
   cursor:pointer;
+  setInterval(function(){
+  let h = document.createElement("div");
+  h.innerHTML = "❤";
+  h.className = "heart";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = (15 + Math.random()*25) + "px";
+  document.body.appendChild(h);
+
+  setTimeout(()=>{ h.remove(); },5000);
+},300);
+
 }
 
-.yes{background:#ff4d6d;color:white;}
-.no{background:gray;color:white;}
-.refresh{background:white;color:black;}
+.yes{
+  background:#2ecc71;   /* fresh green */
+  color:white;
+}
+
+.no{
+  background:#a3e4c1;   /* light mint */
+  color:#1e4620;
+}
+
+.refresh{
+  background:#27ae60;   /* deep green */
+  color:white;
+}
+
 
 .glow{
   font-size:32px;
