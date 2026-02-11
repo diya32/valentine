@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Divu ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align:center;
+  background: black;
+  color:white;
+  overflow:hidden;
+}
+
+.box{
+  margin-top:70px;
+  padding:20px;
+}
+
+button{
+  padding:12px 22px;
+  font-size:18px;
+  margin:10px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.yes{background:#ff4d6d;color:white;}
+.no{background:gray;color:white;}
+.refresh{background:white;color:black;}
+
+.glow{
+  font-size:32px;
+  color:#ff4d6d;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+  from { text-shadow: 0 0 10px #fff; }
+  to { text-shadow: 0 0 25px #ff4d6d; }
+}
+
+img{
+  width:250px;
+  border-radius:15px;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>⚠️ SYSTEM ERROR 💔</h1>
+<p>Girlfriend access missing...</p>
+<button class="refresh" onclick="countdown()">REFRESH 🔄</button>
+</div>
+
+<script>
+
+function countdown(){
+  document.body.innerHTML = `
+  <div class="box">
+  <h2>Loading something special for you Divu ❤️</h2>
+  <h1 id="count">3</h1>
+  </div>
+  `;
+  
+  let i = 3;
+  let x = setInterval(function(){
+    i--;
+    document.getElementById("count").innerHTML = i;
+    if(i==0){
+      clearInterval(x);
+      start();
+    }
+  },1000);
+}
+
+function start(){
+  document.body.innerHTML = `
+  <div class="box">
+  <h1>Chaki 😌<br>Will you be my Valentine? ❤️</h1>
+  <button class="yes" onclick="intro()">YES 😍</button>
+  <button class="no" onmouseover="move(this)">NO 🙈</button>
+  </div>
+  `;
+}
+
+function move(btn){
+  btn.style.position="absolute";
+  btn.style.top=Math.random()*80+"%";
+  btn.style.left=Math.random()*80+"%";
+}
+
+function intro(){
+  document.body.innerHTML = `
+  <div class="box">
+  <h1 class="glow">Divu ❤️</h1>
+  <p>Let me remind you of something…</p>
+  </div>
+  `;
+  setTimeout(memories,2000);
+}
+
+function memories(){
+
+  let photos = [
+    "PHOTO1_LINK",
+    "PHOTO2_LINK",
+    "PHOTO3_LINK",
+    "PHOTO4_LINK",
+    "PHOTO5_LINK",
+    "PHOTO6_LINK",
+    "PHOTO7_LINK",
+    "PHOTO8_LINK",
+    "PHOTO9_LINK",
+    "PHOTO10_LINK",
+    "PHOTO11_LINK",
+    "PHOTO12_LINK"
+  ];
+
+  let captions = [
+    "From 'Devanshi?' → to my favorite notification ❤️",
+    "You said you trust slowly… and still chose me 🥹",
+    "From biodata talks → to heart data 😌❤️",
+    "You noticing my eyes & the way I talk… I noticed my future 💘",
+    "You promised you’ll change for the world, but stay the same for me ❤️",
+    "'Taro face jova ni icha thay che' and mine never ends 😘",
+    "Golu molu in video call… but hero in my heart 🥰",
+    "Coffee date jokes, chocolate stories… every line = us 😂❤️",
+    "'Love you so much' and suddenly I forget how to speak 🥹",
+    "From awkward starts → to endless talks 💞",
+    "You + me = comfort I never want to lose ❤️",
+    "And this is just the beginning, Divu 💍"
+  ];
+
+  let i = 0;
+
+  document.body.innerHTML = `
+  <div class="box">
+    <h2>Our memories 🥹❤️</h2>
+    <p id="number">1 / 12</p>
+    <img id="slide" src="`+photos[i]+`">
+    <p id="caption">`+captions[i]+`</p>
+    <button class="yes" onclick="nextPhoto()">Next ➡</button>
+  </div>
+  `;
+
+  window.nextPhoto = function(){
+    i++;
+    if(i < photos.length){
+      document.getElementById("slide").src = photos[i];
+      document.getElementById("caption").innerHTML = captions[i];
+      document.getElementById("number").innerHTML = (i+1) + " / 12";
+    } else {
+      timeline();
+    }
+  }
+}
+
+function timeline(){
+  document.body.innerHTML = `
+  <div class="box">
+  <h2>Strangers → Friends → Us → Forever ❤️</h2>
+  <button class="yes" onclick="future()">Continue 💘</button>
+  </div>
+  `;
+}
+
+function future(){
+  document.body.innerHTML = `
+  <div class="box">
+  <h2>Future prediction 🔮</h2>
+  <p>My best decision will always be you, Divu.</p>
+  <button class="yes" onclick="finalMessage()">One last thing 😘</button>
+  </div>
+  `;
+}
+
+function finalMessage(){
+  document.body.innerHTML = `
+  <div class="box">
+  <h2>Before you see this… ❤️</h2>
+  <p>Thank you for choosing me.</p>
+  <p>For your patience, care, teasing & love.</p>
+  <p>I am lucky you are mine, Chaki 🥹</p>
+  <button class="yes" onclick="love()">Open surprise 🎁</button>
+  </div>
+  `;
+}
+
+function love(){
+  document.body.innerHTML = `
+  <div class="box">
+  <h1>I LOVEEE YOUUU DIVU ❤️❤️❤️</h1>
+  <p>Happy Valentine’s Day, my Chaki 💋</p>
+  <p>Forever yours. No return policy 😌</p>
+  <br>
+  
+  <video width="320" controls autoplay>
+    <source src="PASTE_VIDEO_LINK_HERE" type="video/mp4">
+  </video>
+
+  </div>
+  `;
+}
+
+</script>
+
+</body>
+</html>
