@@ -12,6 +12,10 @@ body{
   overflow-x:hidden;
   transition:.5s;
 }
+  /* ADD THIS JUST BELOW BODY */
+html{
+  transition:.5s;
+}
 
 /* SOFT PINK FAMILY – BUT EACH PAGE UNIQUE */
 
@@ -116,7 +120,9 @@ img{
 <script>
 
 /* change theme */
-function setTheme(t){ document.body.className = t; }
+function setTheme(t){
+  document.documentElement.className = t;
+}
 
 /* countdown */
 function countdown(){
