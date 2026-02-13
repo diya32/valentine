@@ -75,6 +75,11 @@ img{
 @keyframes float{
   to{ transform:translateY(-110vh); opacity:0; }
 }
+  @keyframes pulse{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+  100%{ transform:scale(1); }
+}
 
 .divider{
   height:1px;
@@ -240,6 +245,20 @@ function loveQuestion(){
   </div>
   `;
 }
+  function yesLove(){
+
+  // heart blast
+  for(let i=0;i<50;i++){
+    let f = document.createElement("div");
+    f.innerHTML = "❤";
+    f.className = "heart";
+    f.style.left = Math.random()*100 + "vw";
+    f.style.fontSize = (15+Math.random()*25)+"px";
+    document.body.appendChild(f);
+  }
+
+  setTimeout(finalMessage,2000);
+}
 
 function runNo(){
   let btn = document.getElementById("noBtn");
@@ -265,10 +284,11 @@ function noLove(){
 function finalMessage(){
   document.body.innerHTML = `
   <div class="box">
-  <div class="topline">LAST STEP</div>
-  <h2 class="big">Thank you for choosing me</h2>
+  <div class="topline">FOREVER STARTS NOW</div>
+  <h2 class="big">You are mine ❤️</h2>
+  <p class="small">And I am always yours 💍</p>
   <div class="divider"></div>
-  <button class="yes" onclick="love()">Open final surprise</button>
+  <button class="yes" onclick="love()">See magic</button>
   </div>
   `;
 }
@@ -276,21 +296,23 @@ function finalMessage(){
 function love(){
   document.body.innerHTML = `
   <div class="box">
-  <div class="topline">FOREVER</div>
-  <h1 class="big">I love you Divu</h1>
+  <div class="topline">INFINITE LOVE</div>
+  <h1 class="big" style="animation: pulse 1s infinite;">
+    I LOVE YOU DIVU ❤️
+  </h1>
+  <p class="small">No return policy 😌</p>
   </div>
   `;
-}
 
-/* floating hearts */
-setInterval(function(){
-  let h = document.createElement("div");
-  h.innerHTML = "❤";
-  h.className = "heart";
-  h.style.left = Math.random()*100 + "vw";
-  document.body.appendChild(h);
-  setTimeout(()=>{ h.remove(); },5000);
-},500);
+  for(let i=0;i<80;i++){
+    let f = document.createElement("div");
+    f.innerHTML = "❤";
+    f.className = "heart";
+    f.style.left = Math.random()*100 + "vw";
+    f.style.fontSize = (15+Math.random()*30)+"px";
+    document.body.appendChild(f);
+  }
+}
 
 </script>
 
