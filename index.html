@@ -257,8 +257,8 @@ function yesLove(){
   }
   setTimeout(finalMessage,2000);
 }
-
 function noLove(){
+
   document.body.innerHTML = `
   <div class="box">
     <div class="topline">ARE YOU SURE?</div>
@@ -267,9 +267,12 @@ function noLove(){
   </div>
   `;
 
-  // after 2 seconds go back to question
-  setTimeout(loveQuestion, 2000);
+  setTimeout(function(){
+    // clear and open the love question again
+    loveQuestion();
+  }, 2000);
 }
+
 
 function finalMessage(){
   document.body.innerHTML = `
