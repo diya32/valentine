@@ -42,17 +42,6 @@ button{
   border:none;
   border-radius:12px;
   cursor:pointer;
-  setInterval(function(){
-  let h = document.createElement("div");
-  h.innerHTML = "❤";
-  h.className = "heart";
-  h.style.left = Math.random()*100 + "vw";
-  h.style.fontSize = (15 + Math.random()*25) + "px";
-  document.body.appendChild(h);
-
-  setTimeout(()=>{ h.remove(); },5000);
-},300);
-
 }
 
 .yes{
