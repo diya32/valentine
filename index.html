@@ -9,11 +9,20 @@ body{
   margin:0;
   font-family: 'Segoe UI', sans-serif;
   text-align:center;
-  background: linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
-  color:#c2185b;
   overflow-x:hidden;
-  transition:1s;
+  transition:.5s;
 }
+
+/* THEMES */
+.theme1{ background: linear-gradient(135deg,#ffd6e7,#ffe5ec); color:#c2185b; }
+.theme2{ background: linear-gradient(135deg,#ff9a9e,#fad0c4); color:#c2185b; }
+.theme3{ background: linear-gradient(135deg,#fbc2eb,#a6c1ee); color:#c2185b; }
+.theme4{ background: linear-gradient(135deg,#ffecd2,#fcb69f); color:#c2185b; }
+.theme5{ background: linear-gradient(135deg,#a1c4fd,#c2e9fb); color:#c2185b; }
+.theme6{ background: linear-gradient(135deg,#ff758c,#ff7eb3); color:white; }
+.theme7{ background: linear-gradient(135deg,#ff0844,#ffb199); color:white; }
+.theme8{ background: linear-gradient(135deg,#43e97b,#38f9d7); color:#064420; }
+.theme9{ background: linear-gradient(135deg,#ff512f,#dd2476); color:white; }
 
 .topline{
   font-size:20px;
@@ -83,7 +92,7 @@ img{
 </style>
 </head>
 
-<body>
+<body class="theme1">
 
 <div class="box">
 <div class="topline">PRIVATE ACCESS</div>
@@ -95,15 +104,12 @@ img{
 
 <script>
 
-/* 🎨 theme changer */
-function setTheme(bg1,bg2,text){
-  document.body.style.background = `linear-gradient(135deg, ${bg1}, ${bg2})`;
-  document.body.style.color = text;
-}
+/* change theme */
+function setTheme(t){ document.body.className = t; }
 
 /* countdown */
 function countdown(){
-  setTheme("#ffd6e7","#ffe5ec","#c2185b");
+  setTheme("theme1");
 
   document.body.innerHTML = `
   <div class="box">
@@ -124,9 +130,9 @@ function countdown(){
   },1000);
 }
 
-/* valentine ask */
+/* first ask */
 function start(){
-  setTheme("#ff9a9e","#fad0c4","#c2185b");
+  setTheme("theme2");
 
   document.body.innerHTML = `
   <div class="box">
@@ -148,7 +154,7 @@ function move(btn){
 
 /* intro */
 function intro(){
-  setTheme("#fbc2eb","#a6c1ee","#c2185b");
+  setTheme("theme3");
 
   document.body.innerHTML = `
   <div class="box">
@@ -162,7 +168,7 @@ function intro(){
 
 /* letter */
 function loveCard(){
-  setTheme("#ffecd2","#fcb69f","#c2185b");
+  setTheme("theme4");
 
   document.body.innerHTML = `
   <div class="box">
@@ -181,15 +187,39 @@ function loveCard(){
   `;
 }
 
-/* memories */
+/* memories with all photos */
 function memories(){
-  setTheme("#a1c4fd","#c2e9fb","#c2185b");
+  setTheme("theme5");
 
   let photos = [
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg"
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.09%20PM%20(1).jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.09%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.11%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.12%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.13%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.14%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.15%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.16%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.53.41%20PM.jpeg",
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.54.56%20PM.jpeg",
   ];
 
- let captions = ["Forever ❤️"];
+ let captions = [
+"Hey Divy, Devanshi free chhe ho baby!! ❤️",
+"Na baby kai nathi rai gayu ho… 🥰",
+"Awww baby fingers burn thai hati… bicharu malu baby 😘",
+"Are baby badhu AI na kare Chaki… na baby hu call ma j comfortable chhu ❤️",
+"Ahaa… trust… 😌",
+"Don't ask this type of question baby 😂",
+"Baby change nathi thavana ❤️",
+"Ohoo… face jova mate 😍",
+"Coffee date par javay che 😌",
+"Love you tooo ❤️",
+"Aha maro fav pic",
+"First time… forever 💍"
+];
 
   let i = 0;
 
@@ -201,14 +231,31 @@ function memories(){
     <img id="slide" src="`+photos[i]+`">
     <p id="caption">`+captions[i]+`</p>
     <div class="divider"></div>
-    <button class="yes" onclick="loveQuestion()">Continue</button>
+    <button class="yes" onclick="nextPhoto()">One More ❤️</button>
   </div>
   `;
+
+  window.nextPhoto = function(){
+    i++;
+    if(i < photos.length){
+      let img = document.getElementById("slide");
+      img.style.opacity = 0;
+      setTimeout(()=>{
+        img.src = photos[i];
+        img.style.opacity = 1;
+      },200);
+      document.getElementById("caption").innerHTML = captions[i];
+      document.getElementById("number").innerHTML =
+        "Memory " + (i+1) + " of " + photos.length;
+    } else {
+      loveQuestion();
+    }
+  }
 }
 
-/* love question */
+/* question */
 function loveQuestion(){
-  setTheme("#ff758c","#ff7eb3","white");
+  setTheme("theme6");
 
   document.body.innerHTML = `
   <div class="box">
@@ -216,7 +263,7 @@ function loveQuestion(){
     <h2 class="big">Do you love me?</h2>
     <p class="small">Think carefully 😌</p>
     <div class="divider"></div>
-    <button class="yes" onclick="yesLove()">Yes ❤️</button>
+    <button class="yes" onclick="yesLove()">Yes</button>
     <button class="no" onclick="noLove()">No</button>
   </div>
   `;
@@ -224,7 +271,7 @@ function loveQuestion(){
 
 /* yes */
 function yesLove(){
-  setTheme("#ff0844","#ffb199","white");
+  setTheme("theme7");
 
   for(let i=0;i<40;i++){
     let f = document.createElement("div");
@@ -251,7 +298,7 @@ function noLove(){
 
 /* final */
 function finalMessage(){
-  setTheme("#43e97b","#38f9d7","#064420");
+  setTheme("theme8");
 
   document.body.innerHTML = `
   <div class="box">
@@ -264,7 +311,7 @@ function finalMessage(){
 }
 
 function love(){
-  setTheme("#ff512f","#dd2476","white");
+  setTheme("theme9");
 
   document.body.innerHTML = `
   <div class="box">
