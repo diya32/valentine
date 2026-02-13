@@ -261,11 +261,14 @@ function yesLove(){
 function noLove(){
   document.body.innerHTML = `
   <div class="box">
-    <div class="topline">WRONG ANSWER</div>
-    <h2>Baby yes par j click karvu pade.</h2>
-    <button class="yes" onclick="yesLove()">Try again</button>
+    <div class="topline">ARE YOU SURE?</div>
+    <h2 class="big">Think again 😌</h2>
+    <p class="small">I know your answer is YES ❤️</p>
   </div>
   `;
+
+  // after 2 seconds go back to question
+  setTimeout(loveQuestion, 2000);
 }
 
 function finalMessage(){
