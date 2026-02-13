@@ -233,45 +233,33 @@ function loveQuestion(){
   <div class="box">
     <div class="topline">IMPORTANT</div>
     <h2 class="big">Do you love me?</h2>
-    <p class="small">Think carefully</p>
+    <p class="small">Think carefully 😌</p>
+    <div class="divider"></div>
+    <button class="yes" onclick="yesLove()">Yes ❤️</button>
+    <button class="no" id="noBtn" onmouseover="runNo()">No 🙈</button>
   </div>
   `;
-
-  setTimeout(()=>{
-    document.querySelector(".box").innerHTML += `
-      <div class="divider"></div>
-      <button class="yes" onclick="yesLove()">Yes</button>
-      <button class="no" onclick="noLove()">No</button>
-    `;
-  },3500);
 }
 
-function yesLove(){
-  for(let i=0;i<30;i++){
-    let f = document.createElement("div");
-    f.innerHTML = "❤";
-    f.className = "heart";
-    f.style.left = Math.random()*100 + "vw";
-    f.style.fontSize = (15+Math.random()*20)+"px";
-    document.body.appendChild(f);
-  }
-  setTimeout(finalMessage,2000);
+function runNo(){
+  let btn = document.getElementById("noBtn");
+  btn.style.position = "absolute";
+  btn.style.top = Math.random()*80 + "%";
+  btn.style.left = Math.random()*80 + "%";
 }
+
 function noLove(){
-
   document.body.innerHTML = `
   <div class="box">
-    <div class="topline">ARE YOU SURE?</div>
-    <h2 class="big">Think again 😌</h2>
-    <p class="small">I know your answer is YES ❤️</p>
+    <div class="topline">HAHA</div>
+    <h2 class="big">Nice try 😌</h2>
+    <p class="small">But answer is YES only ❤️</p>
   </div>
   `;
 
-  setTimeout(function(){
-    // clear and open the love question again
-    loveQuestion();
-  }, 2000);
+  setTimeout(loveQuestion,1500);
 }
+
 
 
 function finalMessage(){
