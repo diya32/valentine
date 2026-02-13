@@ -9,7 +9,7 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   text-align:center;
   background: #ffd6e7;
-  color:white;
+  color:#c2185b;
   overflow:hidden;
 }
   .heart{
@@ -171,13 +171,14 @@ function memories(){
 
   document.body.innerHTML = `
   <div class="box">
-    <h2>Our memories 🥹❤️</h2>
-    <p id="number">1 / 12</p>
+    <h2 style="color:#c2185b;">Our memories 🥹❤️</h2>
+    <p id="number" style="color:#c2185b;">1 / 12</p>
     <img id="slide" src="`+photos[i]+`">
-    <p id="caption">`+captions[i]+`</p>
-    <button class="yes" onclick="nextPhoto()">Next ➡</button>
+    <p id="caption" style="color:#c2185b;">`+captions[i]+`</p>
+    <button class="yes" onclick="nextPhoto()">One More 💘</button>
   </div>
   `;
+
 
   window.nextPhoto = function(){
     i++;
@@ -237,6 +238,18 @@ function love(){
   </div>
   `;
 }
+  // floating hearts
+setInterval(function(){
+  let h = document.createElement("div");
+  h.innerHTML = "❤";
+  h.className = "heart";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = (15 + Math.random()*25) + "px";
+  document.body.appendChild(h);
+
+  setTimeout(()=>{ h.remove(); },5000);
+},300);
+
 
 </script>
 
