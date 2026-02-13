@@ -12,9 +12,9 @@ body{
   background: linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
   color:#c2185b;
   overflow-x:hidden;
+  transition:1s;
 }
 
-/* decorative top line */
 .topline{
   font-size:20px;
   letter-spacing:2px;
@@ -31,15 +31,8 @@ body{
   box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
-.big{
-  font-size:30px;
-  margin:10px 0;
-}
-
-.small{
-  font-size:20px;
-  opacity:0.8;
-}
+.big{ font-size:30px; margin:10px 0; }
+.small{ font-size:20px; opacity:0.8; }
 
 button{
   padding:12px 22px;
@@ -75,7 +68,8 @@ img{
 @keyframes float{
   to{ transform:translateY(-110vh); opacity:0; }
 }
-  @keyframes pulse{
+
+@keyframes pulse{
   0%{ transform:scale(1); }
   50%{ transform:scale(1.1); }
   100%{ transform:scale(1); }
@@ -101,7 +95,16 @@ img{
 
 <script>
 
+/* 🎨 theme changer */
+function setTheme(bg1,bg2,text){
+  document.body.style.background = `linear-gradient(135deg, ${bg1}, ${bg2})`;
+  document.body.style.color = text;
+}
+
+/* countdown */
 function countdown(){
+  setTheme("#ffd6e7","#ffe5ec","#c2185b");
+
   document.body.innerHTML = `
   <div class="box">
   <div class="topline">INITIALIZING LOVE</div>
@@ -121,7 +124,10 @@ function countdown(){
   },1000);
 }
 
+/* valentine ask */
 function start(){
+  setTheme("#ff9a9e","#fad0c4","#c2185b");
+
   document.body.innerHTML = `
   <div class="box">
   <div class="topline">VALENTINE MODE</div>
@@ -140,7 +146,10 @@ function move(btn){
   btn.style.left=Math.random()*80+"%";
 }
 
+/* intro */
 function intro(){
+  setTheme("#fbc2eb","#a6c1ee","#c2185b");
+
   document.body.innerHTML = `
   <div class="box">
   <div class="topline">BECAUSE YOU MATTER</div>
@@ -151,7 +160,10 @@ function intro(){
   setTimeout(loveCard,2000);
 }
 
+/* letter */
 function loveCard(){
+  setTheme("#ffecd2","#fcb69f","#c2185b");
+
   document.body.innerHTML = `
   <div class="box">
     <div class="topline">A SMALL LETTER</div>
@@ -169,38 +181,15 @@ function loveCard(){
   `;
 }
 
+/* memories */
 function memories(){
+  setTheme("#a1c4fd","#c2e9fb","#c2185b");
 
   let photos = [
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.09%20PM%20(1).jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.09%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.11%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.12%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.13%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.14%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.15%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.16%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.53.41%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.54.56%20PM.jpeg",
-
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg"
   ];
 
- let captions = [
-"Hey Divy, Devanshi free chhe ho baby!! ❤️",
-"Na baby kai nathi rai gayu ho… 🥰",
-"Awww baby fingers burn thai hati… bicharu malu baby 😘",
-"Are baby badhu AI na kare Chaki… na baby hu call ma j comfortable chhu, specially video call ma ❤️",
-"Ahaa… trust… 😌",
-"Don't ask this type of question baby, it's personal… maska hehe 😂",
-"Baby 1000% kidhu chhe k mara mate change nathi thavana, yaad rakhjo ❤️",
-"Ohoo… samethi VC a pan face jova mate, wahh baby 😍",
-"Mara boyfriend ne kai kevanu nai brbr… bau coffee date par javay che he 😌",
-"Nahi ji, hum to sabko sath me leke aate he chat par… btw love you tooo ❤️",
-"Aha maro fav pic",
-"First time yeye… and still forever 💍"
-];
+ let captions = ["Forever ❤️"];
 
   let i = 0;
 
@@ -212,28 +201,15 @@ function memories(){
     <img id="slide" src="`+photos[i]+`">
     <p id="caption">`+captions[i]+`</p>
     <div class="divider"></div>
-    <button class="yes" onclick="nextPhoto()">One More</button>
+    <button class="yes" onclick="loveQuestion()">Continue</button>
   </div>
   `;
-
-  window.nextPhoto = function(){
-    i++;
-    if(i < photos.length){
-      let img = document.getElementById("slide");
-      img.style.opacity = 0;
-      setTimeout(()=>{
-        img.src = photos[i];
-        img.style.opacity = 1;
-      },200);
-      document.getElementById("caption").innerHTML = captions[i];
-      document.getElementById("number").innerHTML = "Memory " + (i+1) + " of " + photos.length;
-    } else {
-      loveQuestion();
-    }
-  }
 }
 
+/* love question */
 function loveQuestion(){
+  setTheme("#ff758c","#ff7eb3","white");
+
   document.body.innerHTML = `
   <div class="box">
     <div class="topline">IMPORTANT</div>
@@ -241,14 +217,16 @@ function loveQuestion(){
     <p class="small">Think carefully 😌</p>
     <div class="divider"></div>
     <button class="yes" onclick="yesLove()">Yes ❤️</button>
-    <button class="no" id="noBtn" onmouseover="runNo()">No 🙈</button>
+    <button class="no" onclick="noLove()">No</button>
   </div>
   `;
 }
-  function yesLove(){
 
-  // heart blast
-  for(let i=0;i<50;i++){
+/* yes */
+function yesLove(){
+  setTheme("#ff0844","#ffb199","white");
+
+  for(let i=0;i<40;i++){
     let f = document.createElement("div");
     f.innerHTML = "❤";
     f.className = "heart";
@@ -256,63 +234,57 @@ function loveQuestion(){
     f.style.fontSize = (15+Math.random()*25)+"px";
     document.body.appendChild(f);
   }
-
   setTimeout(finalMessage,2000);
 }
 
-function runNo(){
-  let btn = document.getElementById("noBtn");
-  btn.style.position = "absolute";
-  btn.style.top = Math.random()*80 + "%";
-  btn.style.left = Math.random()*80 + "%";
-}
-
+/* no */
 function noLove(){
   document.body.innerHTML = `
   <div class="box">
-    <div class="topline">HAHA</div>
-    <h2 class="big">Nice try 😌</h2>
-    <p class="small">But answer is YES only ❤️</p>
+    <div class="topline">ARE YOU SURE?</div>
+    <h2 class="big">Think again 😌</h2>
+    <p class="small">I know it is YES ❤️</p>
   </div>
   `;
-
-  setTimeout(loveQuestion,1500);
+  setTimeout(loveQuestion,2000);
 }
 
-
-
+/* final */
 function finalMessage(){
+  setTheme("#43e97b","#38f9d7","#064420");
+
   document.body.innerHTML = `
   <div class="box">
-  <div class="topline">FOREVER STARTS NOW</div>
-  <h2 class="big">You are mine ❤️</h2>
-  <p class="small">And I am always yours 💍</p>
+  <div class="topline">LAST STEP</div>
+  <h2 class="big">Thank you for choosing me</h2>
   <div class="divider"></div>
-  <button class="yes" onclick="love()">See magic</button>
+  <button class="yes" onclick="love()">Open final surprise</button>
   </div>
   `;
 }
 
 function love(){
+  setTheme("#ff512f","#dd2476","white");
+
   document.body.innerHTML = `
   <div class="box">
-  <div class="topline">INFINITE LOVE</div>
-  <h1 class="big" style="animation: pulse 1s infinite;">
+  <div class="topline">FOREVER</div>
+  <h1 class="big" style="animation:pulse 1s infinite;">
     I LOVE YOU DIVU ❤️
   </h1>
-  <p class="small">No return policy 😌</p>
   </div>
   `;
-
-  for(let i=0;i<80;i++){
-    let f = document.createElement("div");
-    f.innerHTML = "❤";
-    f.className = "heart";
-    f.style.left = Math.random()*100 + "vw";
-    f.style.fontSize = (15+Math.random()*30)+"px";
-    document.body.appendChild(f);
-  }
 }
+
+/* floating hearts */
+setInterval(function(){
+  let h = document.createElement("div");
+  h.innerHTML = "❤";
+  h.className = "heart";
+  h.style.left = Math.random()*100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(()=>{ h.remove(); },5000);
+},500);
 
 </script>
 
