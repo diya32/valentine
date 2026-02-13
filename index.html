@@ -7,48 +7,100 @@
 <style>
 body{
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  text-align:center;
-  background: linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
+  font-family:'Segoe UI', sans-serif;
+  background:linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
   color:#c2185b;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
-/* decorative top line */
+/* soft background glow */
+body::before{
+  content:"";
+  position:fixed;
+  width:220px;
+  height:220px;
+  background:rgba(255,255,255,0.5);
+  filter:blur(70px);
+  top:-60px;
+  right:-60px;
+  border-radius:50%;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:200px;
+  height:200px;
+  background:rgba(255,105,135,0.25);
+  filter:blur(70px);
+  bottom:-60px;
+  left:-50px;
+  border-radius:50%;
+}
+
+/* card */
+.box{
+  margin:20px;
+  padding:30px 20px;
+  background:rgba(255,255,255,0.92);
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  min-height:60vh;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  animation:fade 0.4s ease;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* small top label */
 .topline{
   font-size:12px;
   letter-spacing:2px;
-  opacity:0.7;
-  margin-bottom:10px;
+  opacity:0.6;
+  margin-bottom:8px;
 }
 
-.box{
-  margin:40px 15px;
-  padding:25px;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-
+/* big question */
 .big{
-  font-size:26px;
+  font-size:32px;
+  font-weight:700;
   margin:10px 0;
+  text-align:center;
+  color:#d81b60;
 }
 
+/* normal text */
 .small{
-  font-size:14px;
-  opacity:0.8;
+  font-size:16px;
+  opacity:0.85;
+  margin-bottom:10px;
+  text-align:center;
+}
+
+.divider{
+  height:1px;
+  background:#ffc2d1;
+  width:80%;
+  margin:15px 0;
 }
 
 button{
   padding:12px 22px;
   font-size:16px;
-  margin:14px;
+  margin:12px;
   border:none;
   border-radius:30px;
   cursor:pointer;
   transition:0.3s;
+  min-width:120px;
 }
 
 button:hover{ transform:scale(1.05); }
@@ -65,21 +117,21 @@ img{
   transition:0.4s;
 }
 
+.footer{
+  margin-top:15px;
+  font-size:11px;
+  opacity:0.6;
+}
+
+/* floating hearts */
 .heart{
   position:fixed;
   bottom:-10px;
   color:#ff2e63;
   animation: float 5s linear infinite;
 }
-
 @keyframes float{
   to{ transform:translateY(-110vh); opacity:0; }
-}
-
-.divider{
-  height:1px;
-  background:#ffc2d1;
-  margin:15px 0;
 }
 </style>
 </head>
@@ -92,6 +144,7 @@ img{
 <p class="small">Girlfriend access missing</p>
 <div class="divider"></div>
 <button class="refresh" onclick="countdown()">Refresh</button>
+<div class="footer">Made with love by Devanshi</div>
 </div>
 
 <script>
@@ -102,6 +155,7 @@ function countdown(){
   <div class="topline">INITIALIZING LOVE</div>
   <h2 class="big">Loading something special for you Divu</h2>
   <h1 id="count">3</h1>
+  <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
   
@@ -121,10 +175,11 @@ function start(){
   <div class="box">
   <div class="topline">VALENTINE MODE</div>
   <h1 class="big">Chaki</h1>
-  <p>Will you be my Valentine?</p>
+  <p class="small">Will you be my Valentine?</p>
   <div class="divider"></div>
   <button class="yes" onclick="intro()">Yes</button>
   <button class="no" onmouseover="move(this)">No</button>
+  <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
 }
@@ -141,6 +196,7 @@ function intro(){
   <div class="topline">BECAUSE YOU MATTER</div>
   <h1 class="big">Divu</h1>
   <p class="small">Before we go ahead...</p>
+  <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
   setTimeout(loveCard,2000);
@@ -160,6 +216,7 @@ function loveCard(){
     </p>
     <div class="divider"></div>
     <button class="yes" onclick="memories()">Open memories</button>
+    <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
 }
@@ -167,22 +224,22 @@ function loveCard(){
 function memories(){
 
   let photos = [
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.09%20PM%20(1).jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.09%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.11%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.12%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.13%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.14%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.15%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.16%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.53.41%20PM.jpeg",
-"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.54.56%20PM.jpeg",
-
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.07%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.13.10%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.53.41%20PM.jpeg%22,
+"https://raw.githubusercontent.com/diya32/valentine/main/WhatsApp%20Image%202026-02-11%20at%204.54.56%20PM.jpeg%22,
+ 
   ];
 
- let captions = [
+  let captions = [
 "Hey Divy, Devanshi free chhe ho baby!! ❤️",
 "Na baby kai nathi rai gayu ho… 🥰",
 "Awww baby fingers burn thai hati… bicharu malu baby 😘",
@@ -195,7 +252,7 @@ function memories(){
 "Nahi ji, hum to sabko sath me leke aate he chat par… btw love you tooo ❤️",
 "Aha maro fav pic 🥹",
 "First time yeye… and still forever 💍"
-];
+  ];
 
   let i = 0;
 
@@ -208,6 +265,7 @@ function memories(){
     <p id="caption">`+captions[i]+`</p>
     <div class="divider"></div>
     <button class="yes" onclick="nextPhoto()">One More</button>
+    <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
 
@@ -234,36 +292,25 @@ function loveQuestion(){
     <div class="topline">IMPORTANT</div>
     <h2 class="big">Do you love me?</h2>
     <p class="small">Think carefully</p>
+    <div class="divider"></div>
+    <button class="yes" onclick="yesLove()">Yes</button>
+    <button class="no" onclick="noLove()">No</button>
+    <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
-
-  setTimeout(()=>{
-    document.querySelector(".box").innerHTML += `
-      <div class="divider"></div>
-      <button class="yes" onclick="yesLove()">Yes</button>
-      <button class="no" onclick="noLove()">No</button>
-    `;
-  },3500);
 }
 
 function yesLove(){
-  for(let i=0;i<30;i++){
-    let f = document.createElement("div");
-    f.innerHTML = "❤";
-    f.className = "heart";
-    f.style.left = Math.random()*100 + "vw";
-    f.style.fontSize = (15+Math.random()*20)+"px";
-    document.body.appendChild(f);
-  }
-  setTimeout(finalMessage,2000);
+  setTimeout(finalMessage,1500);
 }
 
 function noLove(){
   document.body.innerHTML = `
   <div class="box">
     <div class="topline">WRONG ANSWER</div>
-    <h2>Baby yes par j click karvu pade.</h2>
+    <h2 class="big">Baby yes par j click karvu pade.</h2>
     <button class="yes" onclick="yesLove()">Try again</button>
+    <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
 }
@@ -271,24 +318,14 @@ function noLove(){
 function finalMessage(){
   document.body.innerHTML = `
   <div class="box">
-  <div class="topline">LAST STEP</div>
-  <h2 class="big">Thank you for choosing me</h2>
-  <div class="divider"></div>
-  <button class="yes" onclick="love()">Open final surprise</button>
-  </div>
-  `;
-}
-
-function love(){
-  document.body.innerHTML = `
-  <div class="box">
   <div class="topline">FOREVER</div>
   <h1 class="big">I love you Divu</h1>
+  <div class="footer">Made with love by Devanshi</div>
   </div>
   `;
 }
 
-/* floating hearts */
+/* hearts */
 setInterval(function(){
   let h = document.createElement("div");
   h.innerHTML = "❤";
