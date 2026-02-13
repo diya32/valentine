@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Private Form For Divu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg,#ffd6e7,#ffc2d1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  background:white;
+  width:90%;
+  max-width:340px;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  color:#c2185b;
+}
+
+h2{ margin-top:0; }
+
+button{
+  padding:10px 18px;
+  margin:8px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.primary{ background:#2ecc71; color:white; }
+.danger{ background:#e74c3c; color:white; }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="app">
+  <h2>Welcome Divu</h2>
+  <p>This form is private and made only for you.</p>
+  <button class="primary" onclick="step2()">Continue</button>
+</div>
+
+<script>
+
+function step2(){
+  app.innerHTML = `
+  <h2>Identity Check</h2>
+  <p>Are you really my Chaki?</p>
+  <button class="primary" onclick="step3()">Yes obviously</button>
+  `;
+}
+
+function step3(){
+  app.innerHTML = `
+  <h2>Important Question</h2>
+  <p>Think before answering.</p>
+  <br>
+  <button class="primary" onclick="yes()">Yes</button>
+  <button class="danger" onclick="no()">No</button>
+  `;
+}
+
+function no(){
+  app.innerHTML = `
+  <h2>Access Denied</h2>
+  <p>Baby yes par j click karvu pade.</p>
+  <button class="primary" onclick="step3()">Try again</button>
+  `;
+}
+
+function yes(){
+  app.innerHTML = `
+  <h2>Correct Answer</h2>
+  <p>I knew you love me.</p>
+  <button class="primary" onclick="final()">Continue</button>
+  `;
+}
+
+function final(){
+  app.innerHTML = `
+  <h2>I love you Divu</h2>
+  <p>You are my comfort, my happiness, my person.</p>
+  <p>Now come here. Hug pending.</p>
+  `;
+}
+
+</script>
+
+</body>
+</html>
